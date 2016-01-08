@@ -1,0 +1,23 @@
+#divMid {
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	width: 100%;
+	background-color: #eee;
+}
+
+#title {
+	font-size: 5em;
+}
+
+p {
+	font-size: 1.2em;
+}
+
+.container {
+	width: 100%;
+}
+
+button {
+	margin-top: 50px;
+}
