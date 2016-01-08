@@ -4,6 +4,8 @@
 	padding-bottom: 50px;
 	width: 100%;
 	background-color: #eee;
+	display: inline-block;
+	
 }
 
 #title {
@@ -20,4 +22,13 @@ p {
 
 button {
 	margin-top: 50px;
+}
+
+#loginID {
+	margin-top: 50px;
+}
+
+#formLogin {
+	text-align: left;
+
 }
