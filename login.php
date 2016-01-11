@@ -8,39 +8,46 @@
 </head>
 <body>
 	<div class="container">
+		
 		<div class="row">
+			
 			<div id="divMid" class="col-md-12">
 				<img src="img/icone.ico" class="img-circle" width="150" height="150">
 				<h1 id="title">Gameloc</h1>
 				<P>Connexion</P>
-				
 			</div>
+
+		</div>
+
+		<div class="row">
+
 			<div class="col-md-3">
 
 			</div>
+
 			<div id="loginID" class="col-md-6">
 				<form id="formLogin" method="POST" action="loginHandler.php" class="form-horizontale">
 					<div class="form-group">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="email">
 					</div>
 					<div class="form-group">
 						<label for="password">Mot de passe</label>
-						<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						<input type="password" class="form-control" id="password" name="password" placeholder="password">
 					</div>
 
-					<button type="submit" name="action" class="btn btn-primary">Submit</button>
+					<button type="submit" name="action" class="btn btn-primary">Valider</button>
 				</form>
 			</div>
+
 			<div class="col-md-3">
 
 			</div>
-
-
 			
 		</div>
+
 	</div>
-</div>
+
 </body>
 </html>
 
