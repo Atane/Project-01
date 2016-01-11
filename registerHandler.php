@@ -37,11 +37,11 @@
 
 		// check du champ email
 		if (empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
-			$errors['email'] = "Wrong email.";
+			$errors['email'] = "Votre email n'est pas correct.";
 		}
 
 		elseif (strlen($email) > 60){
-			$errors['email'] = "Email too long.";
+			$errors['email'] = "Votre email est trop long.";
 		}
 		else {
 			// je vérifie que l'email n'existe pas déjà dans la bdd
@@ -54,17 +54,17 @@
 
 			// si la requête sql renvoie un résultat, c'est que l'email est déjà présent dans la bdd
 			if ($resultEmail['email']) {
-				$errors['email'] = "Email already exists.";
+				$errors['email'] = "Cet email est déjà utilisé.";
 			}
 		}
 
 
 		// check du champ password
 		if ($password != $passwordConfirm) {
-			$errors['password'] = "Not the same passwords.";
+			$errors['password'] = "Les mots de passe sont différents.";
 		}
 		else if (strlen($password) <= 6) {
-			$errors['password'] = "Password should contain min. 6 characters.";
+			$errors['password'] = "Le mot de passe doit contenir au moins 6 caractères.";
 		}
 		else {
 			// le password contient au moins une lettre
@@ -109,7 +109,7 @@
 
 		// check du champ town
 		if(empty($town)) { 
-			$errors['city'] = "Vous n'avez pas saisi votre ville.";
+			$errors['town'] = "Vous n'avez pas saisi votre ville.";
 		}
 		elseif  (!preg_match ('/^[a-zA-Z-_]{2,50}$/' , $town)) {
 			$errors['town'] = "Votre ville doit contenir entre 2 et 50 caractères.";
@@ -202,7 +202,7 @@
 
 			print_r($errors);			
 
-			header("Location: index.php");
+			header("Location: register.php");
 			die();
 		}
 	}
