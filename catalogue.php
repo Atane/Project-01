@@ -1,3 +1,26 @@
+<?php 
+
+include(__DIR__.'/config/db.php');
+
+$query= $pdo->prepare('SELECT * FROM games');
+$query->execute();
+$allGames = $query->fetchAll();
+
+if(isset($_POST['action'])) {
+	$gameName = $_POST['gameName'];
+	// $plateforme = ;
+	// $dispo = ;
+	$query = $pdo->prepare('SELECT * FROM games WHERE titre LIKE :gameName');
+	$query->bindValue(':gameName', '%'.$gameName.'%', PDO::PARAM_STR);
+	$query->execute();
+
+	$allTitre = $query->fetchAll();
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +42,14 @@
 
 		<div id="" class="row">
 
-			<div  class="col-md-3">
+			<div  class="col-md-2">
 				<div id="divRecherche">
-					<div class="form-group">
-						<label for="inputRecherche">Rechercher :</label>
-						<input type="text" class="form-control" id="inputRecherche" placeholder="Search">
-					</div>
+					<form id="search-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+						<div class="form-group">
+							<label for="gameName">Rechercher</label>
+							<input type="text" class="form-control" name="gameName" placeholder="search">
+						</div>
+					</form>
 
 					<div class="form-group">
 						<label for="inputRecherche">Plateforme :</label>
@@ -42,7 +67,7 @@
 							</label>
 						</div>
 
-						<button type="button" class="btn btn-primary">Rechercher</button>
+						<button type="button" class="btn btn-primary" name="action">Rechercher</button>
 					</div>
 
 				</div>
@@ -80,12 +105,14 @@
 					</div>
 
 					<div class="col-sm-3">
+						<?php foreach ($allGames as $keyGames => $games): ?>
 						<div class="divJeu">
-							<img src="http://image.jeuxvideo.com/medias-sm/142247/1422469608-7141-jaquette-avant.jpg" class="divimg">
-							<h3>Titres du jeu</h3>
-							<p>Plateforme PC</p>
+							<img src="<?php echo $games['image_de_couverture']; ?>" class="divimg">
+							<h3><?php echo $games['titre'];?>
+							<p><?php echo $games['synopsis'];?></p>
 							<button type="button" class="btn btn-success">Louer</button>
 						</div>
+						<?php endforeach; ?>
 					</div>
 					
 					<nav>
