@@ -86,34 +86,20 @@ if(isset($_POST['action'])) {
 						</div>
 					</div>
 
-					<div class="col-sm-3">
-						<div class="divJeu">
-							<img src="http://image.jeuxvideo.com/medias-sm/142247/1422469608-7141-jaquette-avant.jpg" class="divimg">
-							<h3>Titres du jeu</h3>
-							<p>Plateforme PC</p>
-							<button type="button" class="btn btn-success">Louer</button>
-						</div>
-					</div>
+					
 
-					<div class="col-sm-3">
-						<div class="divJeu">
-							<img src="http://image.jeuxvideo.com/medias-sm/142247/1422469608-7141-jaquette-avant.jpg" class="divimg">
-							<h3>Titres du jeu</h3>
-							<p>Plateforme PC</p>
-							<button type="button" class="btn btn-success">Louer</button>
-						</div>
-					</div>
-
-					<div class="col-sm-3">
 						<?php foreach ($allGames as $keyGames => $games): ?>
+					<div class="col-sm-3">
 						<div class="divJeu">
+						<div class="tailleImg">
 							<img src="<?php echo $games['image_de_couverture']; ?>" class="divimg">
+							</div>
 							<h3><?php echo $games['titre'];?>
 							<p><?php echo $games['synopsis'];?></p>
 							<button type="button" class="btn btn-success">Louer</button>
 						</div>
-						<?php endforeach; ?>
 					</div>
+						<?php endforeach; ?>
 					
 					<nav>
 						<ul class="pagination">
