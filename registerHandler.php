@@ -10,10 +10,23 @@
 		$email = trim(htmlentities($_POST['email']));  // trim -> enlève les espaces non souhaités
 		$password = trim(htmlentities($_POST['password']));
 		$passwordConfirm = trim(htmlentities($_POST['passwordConfirm']));
+		$lastname = trim(htmlentities($_POST['lastname']));
+		$firstname = trim(htmlentities($_POST['firstname']));
+		$address = trim(htmlentities($_POST['address']));
+		$zipcode = trim(htmlentities($_POST['zipcode']));
+		$town = trim(htmlentities($_POST['town']));
+		$phone = trim(htmlentities($_POST['phone']));
 
 		echo $email . "</br>";
 		echo $password . "</br>";
 		echo $passwordConfirm . "</br>";
+		echo $lastname . "</br>";
+		echo $firstname . "</br>";
+		echo $address . "</br>";
+		echo $zipcode . "</br>";
+		echo $town . "</br>";
+		echo $phone . "</br>";		
+
 
 		// initialisation d'un tableau d'erreurs
 		$errors = [];
