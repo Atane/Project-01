@@ -17,11 +17,9 @@
 				<p>plateforme</p>
 				<p>PC, Xbox, PS4</p>
 
-				
-				<button type="submit" name="actionRegister" class="btn btn-success">Inscription</button>
+				<button type="submit" name="actionRegister" value="register" onclick="self.location.href='register.php'" class="btn btn-success">Inscription</button>
 
-
-				<button type="submit" name="actionLogin" class="btn btn-primary">Connexion</button>
+				<button type="submit" name="actionLogin" value="loginr" onclick="self.location.href='login.php'" class="btn btn-primary">Connexion</button>
 				
 			</div>
 		</div>
