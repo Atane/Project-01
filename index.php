@@ -19,7 +19,7 @@
 
 				<button type="submit" name="actionRegister" value="register" onclick="self.location.href='register.php'" class="btn btn-success">Inscription</button>
 
-				<button type="submit" name="actionLogin" value="loginr" onclick="self.location.href='login.php'" class="btn btn-primary">Connexion</button>
+				<button type="submit" name="actionLogin" value="login" onclick="self.location.href='login.php'" class="btn btn-primary">Connexion</button>
 				
 			</div>
 		</div>
