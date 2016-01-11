@@ -28,7 +28,7 @@
 
 					<div class="form-group">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="email" value="<?php if(isset($email)) echo $address; ?>">
 					</div>
 
 					<div class="form-group">
@@ -43,32 +43,32 @@
 
 					<div class="form-group">
 						<label for="lastname">Nom</label>
-						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="lastname">
+						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="lastname" value="<?php if(isset($email)) echo $lastname; ?>">
 					</div>
 
 					<div class="form-group">
 						<label for="firstname">Prénom</label>
-						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="firstname">
+						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="firstname" value="<?php if(isset($email)) echo $firstname; ?>">
 					</div>
 
 					<div class="form-group">
 						<label for="address">Adresse</label>
-						<input type="text" class="form-control" id="address" name="address" placeholder="address">
+						<input type="text" class="form-control" id="address" name="address" placeholder="address" value="<?php if(isset($email)) echo $address; ?>">
 					</div>
 
 					<div class="form-group">
 						<label for="zipcode">Code postal</label>
-						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="zipcode">
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="zipcode" value="<?php if(isset($email)) echo $zipcode; ?>">
 					</div>
 
 					<div class="form-group">
 						<label for="town">Ville</label>
-						<input type="text" class="form-control" id="town" name="town" placeholder="town">
+						<input type="text" class="form-control" id="town" name="town" placeholder="town" value="<?php if(isset($email)) echo $town; ?>">
 					</div>
 
 					<div class="form-group">
 						<label for="phone">Téléphone</label>
-						<input type="tel" class="form-control" id="phone" name="phone" placeholder="phone">
+						<input type="tel" class="form-control" id="phone" name="phone" placeholder="phone" value="<?php if(isset($email)) echo $phone; ?>">
 					</div>
 
 					<button type="submit" name="action" class="btn btn-primary">Valider</button>
