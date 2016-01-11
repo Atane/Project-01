@@ -119,8 +119,10 @@
 		else {
 			$_SESSION['registerErrors'] = $errors;
 
-			header("Location: index.php");
-			die();
+			print_r($errors);			
+
+/*			header("Location: index.php");
+			die();*/
 		}
 	}
 ?>
