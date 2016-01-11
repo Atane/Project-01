@@ -32,3 +32,25 @@ p {
 	text-align: left;
 
 }
+
+#divRecherche {
+	background-color: #eee;
+	margin-top: 30px;
+	margin-left: 50px;
+	padding: 10px;
+	width: 80%;
+	
+
+
+	
+}
+
+.divimg {
+	width: 50%;
+}
+
+.divJeu {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
