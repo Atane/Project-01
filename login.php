@@ -25,20 +25,17 @@
 						<input type="email" class="form-control" id="email" name="email" placeholder="Email">
 					</div>
 					<div class="form-group">
-						<label for="password">Password</label>
+						<label for="password">Mot de passe</label>
 						<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 					</div>
 
-					<div class="form-group">
-						<p class="help-block"><a href="forgotPassword.php">Forgot Your password ?</a></p>
-					</div>
-					<button type="submit" name="action" class="btn btn-danger">Submit</button>
+					<button type="submit" name="action" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 			<div class="col-md-3">
 
 			</div>
-			
+
 
 			
 		</div>
