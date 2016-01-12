@@ -66,7 +66,11 @@
 						var map;
 
 						// insérer un marker de position sur la carte
-						var myLatLng = {lat: 48.8909964, lng: 2.2345892};  // position du user
+						$i = 0;
+						<?php foreach($users as $keyUsers => $user): ?>
+							i++;
+							var myLatLng = {lat: 48.8909964, lng: 2.2345892};  // position du user
+						<?php endforeach;?>
 
 						function initMap() {
 							map = new google.maps.Map(document.getElementById('map'), {
@@ -91,8 +95,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	
 </body>
 </html>

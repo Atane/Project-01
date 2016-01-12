@@ -1,0 +1,29 @@
+TO DO:
+
+catalogue.php : 
+
+- position des images sur la page : 
+	limiter l'affichage à 4 images par page
+	faire la pagination en conséquence 
+
+- style : 
+	taille écriture du titre et du champ 'plateforme'
+
+
+
+logout.php : 
+
+- créer une page de logout
+
+
+toutes les pages :
+
+- onglets de navigation : login, register, logout, catalogue, profile, admin, addGame, etc.
+
+
+admin.php
+
+- afficher les derniers jeux insérés dans la bdd par les nouveaux users inscrits
+SELECT * FROM games 
+WHERE owner_user_id IN (SELECT id FROM users 
+                        WHERE created_at > SUBDATE(CURRENT_DATE, 1));

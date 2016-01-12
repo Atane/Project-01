@@ -2,9 +2,27 @@
 
 	include(__DIR__.'/config/db.php');
 
-	$query= $pdo->prepare('SELECT * FROM games');
+	// préparer la requête en récupérant également le type de plateform (inner join de la table 'games' avec la table 'platforms')
+	$query= $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games INNER JOIN platforms ON platform_id = platforms.id');
 	$query->execute();
 	$allGames = $query->fetchAll();
+
+/*	echo '<pre>';
+	print_r($allGames);
+	echo '</pre>';
+	die();*/
+
+
+	// préparer la requête pour récupérer les types de plateforms à afficher dans la box de recherche
+	$query= $pdo->prepare('SELECT * FROM platforms');
+	$query->execute();
+	$allPlatforms = $query->fetchAll();
+
+/*	echo '<pre>';
+	print_r($allPlatforms);
+	echo '</pre>';
+	die();*/
+
 
 	if(isset($_POST['action'])) {
 		$gameName = $_POST['gameName'];
@@ -16,6 +34,7 @@
 
 		$allTitre = $query->fetchAll();
 	}
+
 
 ?>
 
@@ -59,10 +78,9 @@
 						<label for="inputRecherche">Plateforme :</label>
 						<select class="form-control">
 							<option>Tous</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<?php foreach ($allPlatforms as $keyPlatforms => $plateform): ?>
+								<option><?php echo $plateform['name'];?></option>
+							<?php endforeach; ?>
 						</select>
 						<div class="checkbox">
 							<label>
@@ -78,15 +96,6 @@
 
 			<div class="col-md-9">
 				<div class="row">
-					
-<!-- 					<div class="col-sm-3">
-						<div class="divJeu">
-							<img src="http://image.jeuxvideo.com/medias-sm/142247/1422469608-7141-jaquette-avant.jpg" class="divimg">
-							<h3>Titres du jeu</h3>
-							<p>Plateforme PC</p>
-							<button type="button" class="btn btn-success">Louer</button>
-						</div>
-					</div> -->
 
 					<?php foreach ($allGames as $keyGames => $game): ?>
 						<div class="col-sm-3">
@@ -95,7 +104,7 @@
 									<img src="<?php echo $game['url_img']; ?>" class="divimg">
 								</div>
 								<h3><?php echo $game['game_name'];?>
-								<p>Platerforme:<?php echo $game['plateform_id'];?></p>
+								<p>Platerforme: <?php echo $game['platform_name']; ?></p>
 								<button type="button" class="btn btn-success">Louer</button>
 							</div>
 						</div>
