@@ -9,6 +9,7 @@ catalogue.php :
 - style : 
 	taille écriture du titre et du champ 'plateforme'
 
+- faire fonctionner le bouton 'rechercher'
 
 
 logout.php : 
@@ -27,3 +28,4 @@ admin.php
 SELECT * FROM games 
 WHERE owner_user_id IN (SELECT id FROM users 
                         WHERE created_at > SUBDATE(CURRENT_DATE, 1));
+
