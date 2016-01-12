@@ -31,6 +31,19 @@
 		echo $phone . "</br>";
 
 
+		// création d'un tableau de session dans le cas ou le user n'a pas réussi à se logger
+		// permet de conserver les champs correctement saisis si d'autres n'ont pas été saisis correctement
+		$_SESSION['lastRegister'] = [];
+
+		$_SESSION['lastRegister']['email'] = $email;
+		$_SESSION['lastRegister']['lastname'] = $lastname;
+		$_SESSION['lastRegister']['firstname'] = $firstname;
+		$_SESSION['lastRegister']['address'] = $address;
+		$_SESSION['lastRegister']['zipcode'] = $zipcode;		
+		$_SESSION['lastRegister']['town'] = $town;
+		$_SESSION['lastRegister']['phone'] = $phone;
+
+
 		// initialisation d'un tableau d'erreurs
 		$errors = [];
 
@@ -78,7 +91,7 @@
 
 			// si une des conditions n'est pas remplie, erreur :
 			if (!$containsLetter || !$containsDigit ||!$containsSpecial) {
-				$errors['password'] = 'Password should contain min. 6 characters, including one digit, one alphabet, and one special character.';
+				$errors['password'] = 'Le mot de passe doit contenir min. 6 caractères, dont au moins 1 lettre, 1 chiffre et 1 caractère spécial.';
 			}
 		}
 
@@ -192,6 +205,8 @@
 				// on stock le user en session et on supprime le password avant 
 				unset($resultUser['password']);  // suppression de la clé password (pour plus de sécurité)
 				$_SESSION['user'] = $resultUser;
+
+				unset($_SESSION['lastRegister']);  // suppression du tableau de session créé pour récupérer les champs correctement saisis
 
 				header("Location: catalogue.php");
 				die();

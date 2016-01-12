@@ -12,6 +12,13 @@
 		$password = trim(htmlentities($_POST['password']));
 
 
+		// création d'un tableau de session dans le cas ou le user n'a pas réussi à se logger
+		// permet de conserver les champs correctement saisis si d'autres n'ont pas été saisis correctement
+		$_SESSION['lastLogin'] = [];
+
+		$_SESSION['lastLogin']['email'] = $email;
+
+
 		// initialisation d'un tableau d'erreurs
 		$errors = [];
 
@@ -38,15 +45,15 @@
 				die();
 			}
 			else { 
-				$errors['password'] = "Wrong password.";
+				$errors['password'] = "Mot de passe incorrect.";
 			}
 		}
 		else {
-			$errors['user'] = "$email doesn't exist in the database.";
+			$errors['user'] = "$email n'existe pas dans la base de donnée.";
 		}
 
 		$_SESSION['loginErrors'] = $errors;
-		header("Location: index.php");
+		header("Location: login.php");
 		die();
 
 	}

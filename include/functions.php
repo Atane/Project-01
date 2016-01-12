@@ -1,5 +1,13 @@
 <?php
 
+	function checkLoggedIn() {
+		if(empty($_SESSION['user'])) {
+			header("Location: index.php");
+			die();
+		}
+	}
+
+
 	function geocode($address) {
 
 		// URL API de googlemaps 
@@ -42,8 +50,8 @@
 		return $response;
 	}
 
-	echo "<pre>";
+/*	echo "<pre>";
 	print_r (geocode('136 avenue pablo picasso nanterre'));
-	echo "</pre>";
+	echo "</pre>";*/
 
 ?>

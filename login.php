@@ -31,16 +31,39 @@
 
 			<div id="loginID" class="col-md-6">
 				<form id="formLogin" method="POST" action="loginHandler.php" class="form-horizontale">
-					<div class="form-group">
+
+					<div class="form-group <?php if(isset($_SESSION['loginErrors']['user'])) echo 'has-error'; ?>">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="email" value="<?php if(isset($_SESSION['lastLogin']['email'])) echo $_SESSION['lastLogin']['email']; ?>">
+						<?php if(isset($_SESSION['loginErrors']['user'])): ?>
+							 <span class="help-block">
+							 	<?php echo ($_SESSION['loginErrors']['user']); ?>
+							 </span>
+						<?php endif; ?>
 					</div>
-					<div class="form-group">
+
+					<div class="form-group <?php if(isset($_SESSION['loginErrors']['password'])) echo 'has-error'; ?>">
 						<label for="password">Mot de passe</label>
 						<input type="password" class="form-control" id="password" name="password" placeholder="password">
+						<?php if(isset($_SESSION['loginErrors']['password'])): ?>
+							 <span class="help-block">
+							 	<?php echo ($_SESSION['loginErrors']['password']); ?>
+							 </span>
+						<?php endif; ?>
 					</div>
 
 					<button type="submit" name="action" class="btn btn-primary">Valider</button>
+
+					<!-- on supprime les erreurs après les avoir affichées une fois  -->
+					<?php if(isset($_SESSION['loginErrors'])) { 
+						unset($_SESSION['loginErrors']);
+					} ?>
+
+					<!-- on supprime les variables de sessions récupérées après les avoir affichées une fois  -->
+					<?php if(isset($_SESSION['lastLogin'])) { 
+						unset($_SESSION['lastLogin']);
+					} ?>
+
 				</form>
 			</div>
 

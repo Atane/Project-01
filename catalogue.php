@@ -1,21 +1,22 @@
 <?php 
 
-include(__DIR__.'/config/db.php');
+	include(__DIR__.'/config/db.php');
 
-$query= $pdo->prepare('SELECT * FROM games');
-$query->execute();
-$allGames = $query->fetchAll();
-
-if(isset($_POST['action'])) {
-	$gameName = $_POST['gameName'];
-	// $plateforme = ;
-	// $dispo = ;
-	$query = $pdo->prepare('SELECT * FROM games WHERE titre LIKE :gameName');
-	$query->bindValue(':gameName', '%'.$gameName.'%', PDO::PARAM_STR);
+	$query= $pdo->prepare('SELECT * FROM games');
 	$query->execute();
+	$allGames = $query->fetchAll();
 
-	$allTitre = $query->fetchAll();
-}
+	if(isset($_POST['action'])) {
+		$gameName = $_POST['gameName'];
+		// $plateforme = ;
+		// $dispo = ;
+		$query = $pdo->prepare('SELECT * FROM games WHERE game_name LIKE :game_name');
+		$query->bindValue(':game_name', '%'.$gameName.'%', PDO::PARAM_STR);
+		$query->execute();
+
+		$allTitre = $query->fetchAll();
+	}
+
 ?>
 
 
@@ -31,6 +32,7 @@ if(isset($_POST['action'])) {
 </head>
 <body>
 	<div class="container">
+
 		<div class="row">
 			<div id="divMid" class="col-md-12">
 				<img src="img/icone.ico" class="img-circle" width="150" height="150">
@@ -40,10 +42,12 @@ if(isset($_POST['action'])) {
 			</div>
 		</div>
 
-		<div id="" class="row">
+		<div class="row">
 
-			<div  class="col-md-2">
+			<div  class="col-md-3">
+
 				<div id="divRecherche">
+
 					<form id="search-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 						<div class="form-group">
 							<label for="gameName">Rechercher</label>
@@ -69,37 +73,33 @@ if(isset($_POST['action'])) {
 
 						<button type="button" class="btn btn-primary" name="action">Rechercher</button>
 					</div>
-
 				</div>
-
 			</div>
 
-			<div id="" class="col-md-9">
+			<div class="col-md-9">
 				<div class="row">
 					
-					<div class="col-sm-3">
+<!-- 					<div class="col-sm-3">
 						<div class="divJeu">
 							<img src="http://image.jeuxvideo.com/medias-sm/142247/1422469608-7141-jaquette-avant.jpg" class="divimg">
 							<h3>Titres du jeu</h3>
 							<p>Plateforme PC</p>
 							<button type="button" class="btn btn-success">Louer</button>
 						</div>
-					</div>
+					</div> -->
 
-					
-
-						<?php foreach ($allGames as $keyGames => $games): ?>
-					<div class="col-sm-3">
-						<div class="divJeu">
-						<div class="tailleImg">
-							<img src="<?php echo $games['image_de_couverture']; ?>" class="divimg">
+					<?php foreach ($allGames as $keyGames => $game): ?>
+						<div class="col-sm-3">
+							<div class="divJeu">
+								<div class="tailleImg">
+									<img src="<?php echo $game['url_img']; ?>" class="divimg">
+								</div>
+								<h3><?php echo $game['game_name'];?>
+								<p>Platerforme:<?php echo $game['plateform_id'];?></p>
+								<button type="button" class="btn btn-success">Louer</button>
 							</div>
-							<h3><?php echo $games['titre'];?>
-							<p><?php echo $games['synopsis'];?></p>
-							<button type="button" class="btn btn-success">Louer</button>
 						</div>
-					</div>
-						<?php endforeach; ?>
+					<?php endforeach; ?>
 					
 					<nav>
 						<ul class="pagination">
@@ -108,11 +108,8 @@ if(isset($_POST['action'])) {
 						</ul>
 					</nav>
 				</div>
-			</div>
-
-			
-		</div>
-		
+			</div>		
+		</div>	
 	</div>
 </body>
 </html>
