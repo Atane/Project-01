@@ -57,6 +57,10 @@
 
 					<button type="submit" name="action" class="btn btn-primary">Valider</button>
 
+					<div class="form-group">
+						<p class="help-block"><a href="forgotPassword.php">Forgot Your password ?</a></p>
+					</div>
+
 					<!-- on supprime les erreurs après les avoir affichées une fois  -->
 					<?php if(isset($_SESSION['loginErrors'])) { 
 						unset($_SESSION['loginErrors']);
