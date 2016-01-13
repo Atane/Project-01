@@ -4,7 +4,7 @@ include(__DIR__.'/config/db.php');
 
 	// recherche
 
-print_r($_POST);
+
 if(isset($_POST['action'])) {
 	$gameName = $_POST['gameName'];
 	$plateformId = $_POST['platform_id'];
@@ -101,7 +101,7 @@ $games = $query->fetchAll();
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body>
-		<?php // include (__DIR__.'/include/nav.php'); ?>
+		<?php include (__DIR__.'/include/nav.php'); ?>
 		<div class="container">
 
 			<div class="row">
