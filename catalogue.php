@@ -10,7 +10,7 @@
 
 
 	if(isset($_POST['action'])) {
-		$gameName = $_POST['gameName'];
+		$games = $_POST['gameName'];
 		$platformId = $_POST['platform_id'];
 		$checkDispo = isset($_POST['checkDispo']);
 
@@ -28,7 +28,7 @@
 			$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games 
 									INNER JOIN platforms ON platform_id = platforms.id 
 									WHERE game_name LIKE :game_name AND is_available = :checkDispo AND games.platform_id = :platformId');
-			$query->bindValue(':game_name', '%'.$gameName.'%', PDO::PARAM_STR);
+			$query->bindValue(':game_name', '%'.$games.'%', PDO::PARAM_STR);
 			$query->bindValue(':checkDispo', $checkDispo, PDO::PARAM_INT);
 			$query->bindValue(':platformId', $platformId, PDO::PARAM_STR);
 			$query->execute();
@@ -39,7 +39,7 @@
 			$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games 
 									INNER JOIN platforms ON platform_id = platforms.id 
 									WHERE game_name LIKE :game_name AND games.platform_id = :platformId');
-			$query->bindValue(':game_name', '%'.$gameName.'%', PDO::PARAM_STR);
+			$query->bindValue(':game_name', '%'.$games.'%', PDO::PARAM_STR);
 			$query->bindValue(':platformId', $platformId, PDO::PARAM_STR);
 			$query->execute();
 			$allGames = $query->fetchAll();
@@ -48,7 +48,7 @@
 			$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games 
 								INNER JOIN platforms ON platform_id = platforms.id 
 								WHERE game_name LIKE :game_name AND is_available = :checkDispo');
-			$query->bindValue(':game_name', '%'.$gameName.'%', PDO::PARAM_STR);
+			$query->bindValue(':game_name', '%'.$games.'%', PDO::PARAM_STR);
 			$query->bindValue(':checkDispo', $checkDispo, PDO::PARAM_INT);
 			$query->execute();
 			$allGames = $query->fetchAll();
@@ -57,7 +57,7 @@
 			$query = $pdo->prepare('SELECT games.*, platforms.name as platform_name FROM games 
 									INNER JOIN platforms ON platform_id = platforms.id 
 									WHERE game_name LIKE :game_name');
-			$query->bindValue(':game_name', '%'.$gameName.'%', PDO::PARAM_STR);
+			$query->bindValue(':game_name', '%'.$games.'%', PDO::PARAM_STR);
 			$query->execute();
 			$allGames = $query->fetchAll();
 		}	
@@ -72,10 +72,10 @@
 
 	// préparer la requête en récupérant également le type de plateform (inner join de la table 'games' avec la table 'platforms')
 
-	/*	echo '<pre>';
-		print_r($allGames);
-		echo '</pre>';
-		die();*/
+		// echo '<pre>';
+		// print_r($allGames);
+		// echo '</pre>';
+		// die();
 
 		
 	// Pagination
@@ -108,11 +108,12 @@
 
 	$games = $query->fetchAll();
 
-
 	// préparer la requête pour récupérer les types de plateforms à afficher dans la box de recherche
 	$query= $pdo->prepare('SELECT * FROM platforms');
 	$query->execute();
 	$allPlatforms = $query->fetchAll();
+
+
 
 	/*	echo '<pre>';
 		print_r($allPlatforms);
@@ -154,7 +155,7 @@
 					<form id="search-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 						<div class="form-group">
 							<label for="search">Rechercher</label>
-							<input id="search" type="text" class="form-control" name="gameName" placeholder="search" value="<?php if (isset($gameName)) echo $gameName; ?>">
+							<input id="search" type="text" class="form-control" name="gameName" placeholder="search" value="<?php if (isset($_POST['gameName'])) echo $_POST['gameName']; ?>">
 						</div>
 
 						<div class="form-group">
@@ -185,7 +186,7 @@
 
 				<div class="row">
 
-					<div>
+					
 						<?php foreach ($allGames as $keyGames => $game): ?>
 							<div class="col-sm-3">
 								<div class="divJeu">
@@ -197,15 +198,14 @@
 									
 									<p>Platerforme: <?php echo $game['platform_name']; ?></p>
 
-										<?php if ($game['is_available']): ?>
-											<a type="button" class="btn btn-xs btn btn-success">Louer</a>
-										<?php else: ?>
-											<a class="btn btn-xs btn btn-danger" disabled>Indisponible</a>
-										<?php endif; ?>
+									<?php if ($game['is_available']): ?>
+										<a type="button" class="btn btn-xs btn btn-success">Louer</a>
+									<?php else: ?>
+										<a class="btn btn-xs btn btn-danger" disabled>Indisponible</a>
+									<?php endif; ?>
 								</div>
 							</div>
 						<?php endforeach; ?>
-
 						<ul class="pagination">
 							<!-- 8. Mettre la pagination suivant > et précédente < -->
 							<?php if($page > 1): ?>
@@ -221,7 +221,8 @@
 								<li><a href="catalogue.php?page=<?php echo $page + 1; ?>" aria-label="next"><span aria-hidden="true">&raquo;</span></a></li>
 							<?php endif; ?>
 						</ul>
-					</div>
+
+					
 				</div>		
 			</div>	
 		</div>
