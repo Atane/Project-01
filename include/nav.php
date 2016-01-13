@@ -6,12 +6,11 @@
 
 			<div id="divNav" class="col-md-12">
 
+				<?php if(isset($_SESSION['user'])): ?>
 				<ul class="nav navbar-nav">
-					<li class="<?php if($page == 'home') echo 'active'; ?>"><a href="index.php">Home</a></li>
 					<li class="<?php if($page == 'friends') echo 'active'; ?>"><a href="catalogue.php">Catalogue</a></li>
 				</ul>
 
-				<?php if(isset($_SESSION['user'])): ?>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">  <!-- <?php if($page == 'profile') echo 'active'; ?>  -->
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
