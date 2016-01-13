@@ -7,6 +7,15 @@
 	display: inline-block;
 }
 
+#divNav {
+	background-color: #eee;
+
+}
+
+a {
+	color: black;
+}
+
 #title {
 	font-size: 5em;
 }
@@ -53,4 +62,3 @@ p {
 .tailleImg {
 	height: 300px;
 }
-

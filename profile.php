@@ -22,6 +22,9 @@
 </head>
 
 <body>
+
+	<?php include(__DIR__.'/include/nav.php'); ?>
+
 	<div class="container">
 
 		<div class="row">
@@ -43,7 +46,7 @@
 
 				<h1>Ajouter un jeu</h1>
 
-				<form method="POST" action="addgame.php">
+				<form method="POST" action="addgameHandler.php">
 
 					<div class="form-group <?php if(isset($_SESSION['addGameErrors']['gameName'])) echo 'has-error'; ?>">
 						<label for="gameName">Titre</label>
@@ -120,6 +123,8 @@
 
 		</div>
 	</div>
+
+	<?php include(__DIR__.'/include/footer.php'); ?>
 
 </body>
 

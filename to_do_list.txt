@@ -11,6 +11,8 @@ catalogue.php :
 
 - faire fonctionner le bouton 'rechercher'
 
+- désactiver le bouton 'louer' si le jeu est déjà loué
+
 
 logout.php : 
 

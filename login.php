@@ -11,6 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+
+	<?php include(__DIR__.'/include/nav.php'); ?>
+
 	<div class="container">
 		
 		<div class="row">
@@ -74,6 +77,8 @@
 		</div>
 
 	</div>
+
+	<?php include(__DIR__.'/include/footer.php'); ?>
 
 </body>
 </html>

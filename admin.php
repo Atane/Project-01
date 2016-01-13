@@ -40,6 +40,9 @@
 </head>
 
 <body>
+
+	<?php include(__DIR__.'/include/nav.php'); ?>
+
 	<div class="container">
 
 		<div class="row">
@@ -66,11 +69,11 @@
 						var map;
 
 						// insérer un marker de position sur la carte
-						$i = 0;
+						/*$i = 0;
 						<?php foreach($users as $keyUsers => $user): ?>
-							i++;
+							i++;*/
 							var myLatLng = {lat: 48.8909964, lng: 2.2345892};  // position du user
-						<?php endforeach;?>
+					/*	<?php endforeach;?>*/
 
 						function initMap() {
 							map = new google.maps.Map(document.getElementById('map'), {
@@ -95,6 +98,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<?php include(__DIR__.'/include/footer.php'); ?>
 	
 </body>
 </html>
