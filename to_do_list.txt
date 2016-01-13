@@ -14,9 +14,6 @@ catalogue.php :
 - désactiver le bouton 'louer' si le jeu est déjà loué
 
 
-dropdown menu (navbar) : 
-
-- afficher un lien vers la page admin si l'user connecté a un profil admin
 
 
 admin.php

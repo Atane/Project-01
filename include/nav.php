@@ -8,11 +8,11 @@
 
 				<?php if(isset($_SESSION['user'])): ?>
 				<ul class="nav navbar-nav">
-					<li class="<?php if($page == 'friends') echo 'active'; ?>"><a href="catalogue.php">Catalogue</a></li>
+					<li class="<?php if($pageActive == 'catalogue') echo 'active'; ?>"><a href="catalogue.php">Catalogue</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">  <!-- <?php if($page == 'profile') echo 'active'; ?>  -->
+					<li class="dropdown"> 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 							aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
 						<ul class="dropdown-menu">

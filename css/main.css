@@ -9,7 +9,10 @@
 
 #divNav {
 	background-color: #eee;
+}
 
+#divNav .active {
+	background-color: #aaa;
 }
 
 a {

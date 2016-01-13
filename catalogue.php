@@ -6,6 +6,8 @@
 
 		// recherche
 
+	$pageActive = "catalogue";
+
 
 	if(isset($_POST['action'])) {
 		$gameName = $_POST['gameName'];
