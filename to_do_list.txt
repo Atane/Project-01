@@ -14,14 +14,6 @@ catalogue.php :
 - désactiver le bouton 'louer' si le jeu est déjà loué
 
 
-logout.php : 
-
-- créer une page de logout
-
-
-toutes les pages :
-
-- onglets de navigation : login, register, logout, catalogue, profile, admin, addGame, etc.
 
 
 admin.php

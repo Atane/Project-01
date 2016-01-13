@@ -20,6 +20,7 @@
 		$issuedOn = htmlentities($_POST['issuedOn']);
 		$description = htmlentities($_POST['description']);
 		$gameTime = htmlentities($_POST['gameTime']);	
+		$platform_id = htmlentities($_POST['platform_id']);
 
 		/*
 		echo $gameName . '<br/>';
@@ -27,6 +28,7 @@
 		echo $issuedOn .'<br/>';
 		echo $description . '<br/>';
 		echo $gameTime . '<br/>';
+		echo $platform_id . '<br/>';
 		*/
 
 
@@ -39,6 +41,7 @@
 		$_SESSION['lastGameAdded']['issuedOn'] = $issuedOn;
 		$_SESSION['lastGameAdded']['description'] = $description;
 		$_SESSION['lastGameAdded']['gameTime'] = $gameTime;		
+		$_SESSION['lastGameAdded']['platform_id'] = $platform_id;
 
 
 		// initialisation d'un tableau d'erreurs
@@ -65,16 +68,24 @@
 			$errors['description'] = "Veuillez compléter la description du jeu.";
 		}
 
+		// check du champ platform_id
+		if(empty($platform_id)) {
+			$errors['platform_id'] = "Veuillez indiquer la plateforme sur laquelle le jeu est disponible.";
+		}
+
 
 		// s'il n'y a pas d'erreur, j'enregistre le jeu dans la bdd
 		if(empty($errors)) {
 
-			$query = $pdo->prepare('INSERT INTO games (game_name, url_img, published_at, description, game_time) VALUES (:gameName, :imgUrl, :issuedOn, :description, :gameTime)');
+			print_r($_POST);
+
+			$query = $pdo->prepare('INSERT INTO games (game_name, url_img, published_at, description, game_time, platform_id) VALUES (:gameName, :imgUrl, :issuedOn, :description, :gameTime, :platform_id)');
 			$query->bindValue(':gameName', $gameName, PDO::PARAM_STR);
 			$query->bindValue(':imgUrl', $imgUrl, PDO::PARAM_STR);
 			$query->bindValue(':issuedOn', $issuedOn, PDO::PARAM_STR);
 			$query->bindValue(':description', $description, PDO::PARAM_INT);		
 			$query->bindValue(':gameTime', $gameTime, PDO::PARAM_STR);
+			$query->bindValue(':platform_id', $platform_id, PDO::PARAM_INT);
 
 			if(!$query->execute()) {     // éxécute la requête SQL
 				echo "Une erreur est survenue à l'enregistrement";
@@ -90,6 +101,8 @@
 
 				// suppression du tableau de session créé pour récupérer les champs correctement saisis
 				unset($_SESSION['lastGameAdded']);  
+
+				$_SESSION['message'] = "Votre jeu a bien été rajouté.";
 
 				header("Location: addgame.php");
 				die();

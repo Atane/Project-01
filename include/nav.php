@@ -16,7 +16,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 							aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="profile.php">Update Personal Infos</a></li>
+							<li><a href="settings.php">Settings</a></li>
 							<li><a href="addGame.php">Add games</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="logout.php">Logout</a></li>

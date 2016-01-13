@@ -32,19 +32,17 @@
 			<div id="divMid" class="col-md-12">
 				<img src="img/icone.ico" class="img-circle" width="150" height="150">
 				<h1 id="title">Gameloc</h1>
-				<p>Profile</p>				
+				<p>General Account Settings</p>				
 			</div>
 		</div>
 
 		<div class="row">
 
-			<div id="loginID" class="col-md-1">
+			<div id="loginID" class="col-md-3">
 
 			</div>
 
-			<div id="loginID" class="col-md-4">
-
-				<h1>Ajouter un jeu</h1>
+			<div id="loginID" class="col-md-6">
 
 				<form method="POST" action="addgameHandler.php">
 
@@ -107,17 +105,7 @@
 				</form>
 			</div>
 
-			<div id="loginID" class="col-md-2">
-
-			</div>
-
-			<div id="loginID" class="col-md-4">
-
-			<h1>Modifier mot de passe</h1>
-
-			</div>
-
-			<div id="loginID" class="col-md-1">
+			<div id="loginID" class="col-md-3">
 
 			</div>
 

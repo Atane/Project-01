@@ -8,6 +8,12 @@
 	// vérifier que l'user soit connecté
 	checkLoggedIn();
 
+
+	// préparer la requête pour récupérer les types de plateforms à afficher dans la box de recherche
+	$query= $pdo->prepare('SELECT * FROM platforms');
+	$query->execute();
+	$allPlatforms = $query->fetchAll();
+
 ?>
 
 
@@ -43,6 +49,14 @@
 			</div>
 
 			<div id="loginID" class="col-md-6">
+
+				<!-- insertion d'un message si l'user a bien été déconnecté -->
+				<?php if(isset($_SESSION['message'])) :?>
+					<div class="alert alert-info">
+						<p><?php  echo $_SESSION['message']; ?></p>
+						<?php  unset($_SESSION['message']); ?>
+					</div>
+				<?php endif; ?>	
 
 				<form method="POST" action="addgameHandler.php">
 
@@ -89,6 +103,16 @@
 					<div class="form-group <?php if(isset($_SESSION['addGameErrors']['gameTime'])) echo 'has-error'; ?>">
 						<label for="gameTime">Temps de jeu</label>
 						<input type="text" class="form-control" id="gameTime" name="gameTime" placeholder="game time" value="<?php if(isset($_SESSION['lastGameAdded']['gameTime'])) echo $_SESSION['lastGameAdded']['gameTime']; ?>">
+					</div>
+
+					<div class="form-group <?php if(isset($_SESSION['addGameErrors']['platform_id'])) echo 'has-error'; ?>">
+						<label id="labPlateform_id" for="platform_id">Plateforme :</label>
+						<select id="platform_id" name="platform_id" class="form-control">
+							<option selected disabled="" >Select</option>
+							<?php foreach ($allPlatforms as $keyPlatforms => $plateform): ?>
+								<option value="<?php echo $plateform['id'];?>"><?php echo $plateform['name'];?></option>
+							<?php endforeach; ?>
+						</select>
 					</div>
 
 					<button type="submit" name="action" value="add" class="btn btn-primary">Ajouter</button>

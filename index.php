@@ -1,3 +1,8 @@
+<?php
+	session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +14,21 @@
 <body>
 
 	<?php include(__DIR__.'/include/nav.php'); ?>
-	
+
 	<div class="container">
 
 		<div class="row">
 
-			<!-- insertion d'un message si l'user a bien été déconnecté -->
-			<?php if(isset($_SESSION['message'])) :?>
-				<div class="alert alert-info">
-					<p><?php  echo $_SESSION['message']; ?></p>
-					<?php  unset($_SESSION['message']); ?>
-				</div>
-			<?php endif; ?>	
-
 			<div id="divMid" class="col-md-12">
+
+				<!-- insertion d'un message si l'user a bien été déconnecté -->
+				<?php if(isset($_SESSION['message'])) :?>
+					<div class="alert alert-info">
+						<p><?php  echo $_SESSION['message']; ?></p>
+						<?php  unset($_SESSION['message']); ?>
+					</div>
+				<?php endif; ?>	
+
 				<img src="img/icone.ico" class="img-circle" width="150" height="150">
 				<h1 id="title">Gameloc</h1>
 				<p>Bienvenue dans la plus grande communauté de gamers sur Paris</p>
